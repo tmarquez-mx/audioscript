@@ -30,7 +30,7 @@ La propuesta parte de un dilema frecuente en la investigación cualitativa: la t
 
 El prototipo conceptual interactivo puede explorarse en CodePen:
 
-[Ver demo en CodePen]([https://codepen.io/Teresa-Marquez/full/QwKKwwL](https://codepen.io/Teresa-Marquez/pen/qERRvRy))
+[Ver demo en CodePen](https://codepen.io/Teresa-Marquez/pen/qERRvRy)
 
 La página de presentación del proyecto está disponible aquí:
 
