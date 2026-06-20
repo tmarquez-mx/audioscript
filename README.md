@@ -28,13 +28,16 @@ La propuesta parte de un dilema frecuente en la investigación cualitativa: la t
 
 ## Demostración
 
-El prototipo conceptual interactivo puede explorarse en CodePen:
+El demo conceptual interactivo puede explorarse en CodePen:
 
 [Ver demo en CodePen](https://codepen.io/Teresa-Marquez/pen/qERRvRy)
 
 La página de presentación del proyecto está disponible aquí:
-
 [Audioscript contextual, Techiholic labs](https://techiholic.netlify.app/audioscript_contextual)
+
+
+[Captura de prueba de concepto (100% funcional)](https://github.com/tmarquez-mx/audioscript#:~:text=prototipo0_1_1_Audioscript.png)
+
 
 ## Propósito
 
