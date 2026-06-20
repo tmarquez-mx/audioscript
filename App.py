@@ -890,17 +890,19 @@ def main():
             st.markdown("### Memos de análisis")
             st.caption("Anotaciones rápidas para complementar la transcripción.")
 
-            memo_input = st.text_area(
-                "Nueva anotación",
-                key=f"memo_input_{idx}",
-                height=140,
-            )
-            if st.button("Guardar Memo"):
+            with st.form(key=f"memo_form_{idx}", clear_on_submit=True):
+                memo_input = st.text_area(
+                    "Nueva anotación",
+                    key=f"memo_input_{idx}",
+                    height=140,
+                )
+                memo_submitted = st.form_submit_button("Guardar Memo")
+
+            if memo_submitted:
                 if memo_input.strip():
                     st.session_state.memos.append(
                         {"segmento": idx + 1, "memo": memo_input.strip()}
                     )
-                    st.session_state[f"memo_input_{idx}"] = ""
                     save_project_state()
                     st.rerun()
                 st.warning("Escribe un memo antes de guardarlo.")
