@@ -32,7 +32,7 @@ El demo conceptual interactivo puede explorarse en CodePen: [Ver demo en CodePen
 
 La página de presentación del proyecto está disponible aquí: [Audioscript contextual, Techiholic labs](https://techiholic.netlify.app/audioscript_contextual)
 
-Pantalla de prueba de concepto (funcional): [](https://github.com/tmarquez-mx/audioscript#:~:text=prototipo0_1_1_Audioscript.png)
+Captura de pantalla [Piloto 0.0.1](https://github.com/tmarquez-mx/audioscript/blob/main/prototipo0_1_1_Audioscript.png)
 
 ## Propósito
 
