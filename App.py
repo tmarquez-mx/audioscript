@@ -1,6 +1,7 @@
 import os
 import re
 import json
+import html
 import shutil
 import subprocess
 import tempfile
@@ -21,6 +22,199 @@ st.set_page_config(page_title="Audioscript Contextual Pro", layout="wide")
 st.markdown(
     """
     <style>
+    [data-testid="stAppViewContainer"] {
+        background: linear-gradient(180deg, #f7f3cd 0%, #fbf9e8 100%);
+    }
+    [data-testid="stHeader"] {
+        background: transparent;
+    }
+    [data-testid="stSidebar"] {
+        background: linear-gradient(180deg, #f8f8fb 0%, #ffffff 100%);
+        border-right: 1px solid rgba(20, 46, 83, 0.08);
+    }
+    [data-testid="stSidebar"] .block-container {
+        padding-top: 1.2rem;
+    }
+    .app-shell {
+        padding-bottom: 1rem;
+    }
+    .app-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.25rem 1.5rem;
+        border-radius: 18px;
+        background: linear-gradient(135deg, #163a63 0%, #3d6d9b 100%);
+        color: white;
+        box-shadow: 0 14px 35px rgba(20, 46, 83, 0.18);
+        margin-bottom: 1rem;
+    }
+    .app-header__brand {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    .app-logo {
+        width: 74px;
+        height: 44px;
+        border-radius: 10px;
+        background: linear-gradient(135deg, #0b1f38 0%, #1f4f7b 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-align: center;
+        line-height: 1.1;
+        border: 1px solid rgba(255,255,255,0.18);
+    }
+    .app-header h1 {
+        font-size: 1.8rem;
+        margin: 0;
+        color: white;
+    }
+    .app-header p {
+        margin: 0.1rem 0 0 0;
+        opacity: 0.9;
+        font-size: 0.98rem;
+    }
+    .header-actions {
+        display: flex;
+        gap: 0.65rem;
+        align-items: center;
+    }
+    .header-pill {
+        width: 36px;
+        height: 36px;
+        border-radius: 999px;
+        background: rgba(255,255,255,0.18);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.95rem;
+    }
+    .section-card {
+        background: rgba(255,255,255,0.94);
+        border: 1px solid rgba(20, 46, 83, 0.08);
+        box-shadow: 0 8px 24px rgba(40, 52, 89, 0.08);
+        border-radius: 16px;
+        padding: 1rem 1rem 0.85rem 1rem;
+        margin-bottom: 1rem;
+    }
+    .section-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #2b3443;
+        margin-bottom: 0.75rem;
+    }
+    .mini-stat-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 0.65rem;
+        margin-top: 0.8rem;
+    }
+    .mini-stat {
+        background: #f4f7fb;
+        border: 1px solid rgba(20, 46, 83, 0.08);
+        border-radius: 12px;
+        padding: 0.75rem;
+    }
+    .mini-stat__label {
+        color: #6b7280;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+    }
+    .mini-stat__value {
+        color: #17324f;
+        font-size: 1.15rem;
+        font-weight: 700;
+        margin-top: 0.2rem;
+    }
+    .project-card {
+        border: 1px solid rgba(20, 46, 83, 0.12);
+        border-radius: 14px;
+        background: white;
+        padding: 0.75rem;
+        margin-bottom: 0.65rem;
+        box-shadow: inset 0 0 0 1px rgba(255,255,255,0.3);
+    }
+    .project-card strong {
+        color: #24364a;
+        display: block;
+        margin-bottom: 0.15rem;
+    }
+    .project-card span {
+        color: #6b7280;
+        font-size: 0.84rem;
+    }
+    .footer-bar {
+        position: sticky;
+        bottom: 0;
+        margin-top: 1rem;
+        border-radius: 12px 12px 0 0;
+        background: #e91e3e;
+        color: white;
+        text-align: center;
+        padding: 0.55rem 1rem;
+        font-size: 0.9rem;
+        font-weight: 600;
+    }
+    .circle-status-card {
+        background: white;
+        border: 1px solid rgba(20, 46, 83, 0.08);
+        border-radius: 18px;
+        padding: 0.85rem 0.75rem 1rem 0.75rem;
+        text-align: center;
+        box-shadow: 0 8px 22px rgba(30, 41, 59, 0.08);
+        margin-bottom: 0.9rem;
+    }
+    .circle-shell {
+        width: 110px;
+        height: 110px;
+        margin: 0 auto 0.7rem auto;
+        border-radius: 999px;
+        background: radial-gradient(circle at 50% 50%, #f8f4d3 0 39%, #4d82b6 41%, #173d67 100%);
+        border: 6px solid rgba(255,255,255,0.9);
+        box-shadow: 0 10px 22px rgba(20, 46, 83, 0.16);
+        display: grid;
+        place-items: center;
+        position: relative;
+    }
+    .circle-shell::after {
+        content: "";
+        position: absolute;
+        width: 84px;
+        height: 84px;
+        border-radius: 999px;
+        border: 3px solid rgba(123, 97, 255, 0.18);
+        box-shadow: 0 0 18px rgba(123, 97, 255, 0.22);
+    }
+    .circle-core {
+        position: relative;
+        z-index: 1;
+        min-width: 66px;
+        padding: 0.3rem 0.55rem;
+        border-radius: 10px;
+        background: #0f2f53;
+        color: white;
+        font-size: 0.9rem;
+        font-weight: 700;
+        line-height: 1.15;
+    }
+    .circle-label {
+        font-size: 0.78rem;
+        color: #6b7280;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+    }
+    .circle-value {
+        font-size: 1.35rem;
+        color: #7c4de1;
+        font-weight: 800;
+        margin-top: 0.3rem;
+    }
     .main-title {
         font-size: 28px !important;
         font-weight: 700;
@@ -35,6 +229,8 @@ st.markdown(
     .stButton > button {
         width: 100%;
         border-radius: 6px;
+        border: none;
+        box-shadow: none;
     }
     </style>
     """,
@@ -47,6 +243,7 @@ os.makedirs(TEMP_DIR, exist_ok=True)
 APP_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECTS_DIR = os.path.join(APP_DIR, ".audioscript_projects")
 os.makedirs(PROJECTS_DIR, exist_ok=True)
+HEADER_REFERENCE_PATH = os.path.join(APP_DIR, "assets", "header_reference.png")
 
 LANGUAGE_MAP = {
     "Detección automática": None,
@@ -70,6 +267,162 @@ def apply_editor_styles(font_size_px):
         </style>
         """,
         unsafe_allow_html=True,
+    )
+
+
+def render_app_header():
+    """Dibuja una cabecera cercana al mockup de referencia."""
+    if os.path.exists(HEADER_REFERENCE_PATH):
+        st.image(HEADER_REFERENCE_PATH, width=980)
+        return
+
+    st.markdown(
+        """
+        <div class="app-shell">
+          <div class="app-header">
+            <div class="app-header__brand">
+              <div class="app-logo">AUDIOSCRIPT<br>CONTEXTUAL</div>
+              <div>
+                <h1>AudioScript Contextual</h1>
+                <p>Transcripción inmersiva potenciada por IA</p>
+              </div>
+            </div>
+            <div class="header-actions">
+              <span class="header-pill">☼</span>
+              <span class="header-pill">◐</span>
+              <span class="header-pill">☾</span>
+              <span class="header-pill">⚙</span>
+            </div>
+          </div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
+def render_sidebar_circle(label, value, note=""):
+    st.markdown(
+        f"""
+        <div class="circle-status-card">
+          <div class="circle-shell">
+            <div class="circle-core">{value}</div>
+          </div>
+          <div class="circle-label">{label}</div>
+          <div class="circle-value">{value}</div>
+          <div style="font-size:10px;color:#7a7f87;line-height:1.35;margin-top:0.35rem;">{note}</div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
+def open_card(title):
+    st.markdown(
+        f'<div class="section-card"><div class="section-title">{title}</div>',
+        unsafe_allow_html=True,
+    )
+
+
+def close_card():
+    st.markdown("</div>", unsafe_allow_html=True)
+
+
+def render_selectable_transcript_panel(text, highlight_term=""):
+    """Muestra el texto transcrito como bloque seleccionable para codificar con mouse."""
+    safe_text = html.escape(text or "Aún no hay texto transcrito en este segmento.")
+    if highlight_term.strip():
+        pattern = re.compile(re.escape(html.escape(highlight_term.strip())), re.IGNORECASE)
+        safe_text = pattern.sub(
+            lambda match: (
+                "<mark style='background:#ffe58a;color:#1f2937;padding:0 2px;border-radius:3px;'>"
+                f"{match.group(0)}</mark>"
+            ),
+            safe_text,
+        )
+    safe_text = safe_text.replace("\n", "<br>")
+    components.html(
+        f"""
+        <div id="selection-wrap" style="position:relative;">
+          <div id="selection-toolbar" style="display:none; position:absolute; top:10px; right:10px; z-index:20;">
+            <button id="selection-code-btn" style="
+              border:none;
+              background:#17324f;
+              color:white;
+              padding:8px 12px;
+              border-radius:999px;
+              font-size:12px;
+              cursor:pointer;
+              box-shadow:0 8px 18px rgba(23,50,79,.25);
+            ">Codificar selección</button>
+          </div>
+          <div id="selectable-transcript" style="
+            min-height:220px;
+            max-height:340px;
+            overflow:auto;
+            background:#ffffff;
+            border:1px solid rgba(20,46,83,.12);
+            border-radius:14px;
+            padding:16px 18px;
+            color:#263238;
+            font-size:15px;
+            line-height:1.75;
+            white-space:normal;
+            user-select:text;
+          ">{safe_text}</div>
+        </div>
+        <script>
+        const parentDoc = window.parent.document;
+        const transcriptEl = document.getElementById("selectable-transcript");
+        const toolbarEl = document.getElementById("selection-toolbar");
+        const codeButtonEl = document.getElementById("selection-code-btn");
+        let currentSelection = "";
+
+        function setStreamlitField(label, value) {{
+          const target = parentDoc.querySelector(`textarea[aria-label="${{label}}"], input[aria-label="${{label}}"]`);
+          if (!target) return false;
+          const nativeSetter = Object.getOwnPropertyDescriptor(
+            target.tagName === "TEXTAREA"
+              ? window.HTMLTextAreaElement.prototype
+              : window.HTMLInputElement.prototype,
+            "value"
+          ).set;
+          nativeSetter.call(target, value);
+          target.dispatchEvent(new Event("input", {{ bubbles: true }}));
+          target.dispatchEvent(new Event("change", {{ bubbles: true }}));
+          return true;
+        }}
+
+        function focusCodeField() {{
+          const codeField = parentDoc.querySelector('input[aria-label="Código"]');
+          if (codeField) codeField.focus();
+        }}
+
+        function updateSelection() {{
+          const selection = window.getSelection();
+          const selectedText = selection ? selection.toString().trim() : "";
+          if (selectedText && transcriptEl.contains(selection.anchorNode)) {{
+            currentSelection = selectedText;
+            toolbarEl.style.display = "block";
+          }} else {{
+            currentSelection = "";
+            toolbarEl.style.display = "none";
+          }}
+        }}
+
+        transcriptEl.addEventListener("mouseup", updateSelection);
+        transcriptEl.addEventListener("keyup", updateSelection);
+        transcriptEl.addEventListener("touchend", updateSelection);
+
+        codeButtonEl.addEventListener("click", function() {{
+          if (!currentSelection) return;
+          const updated = setStreamlitField("Cita o frase a codificar", currentSelection);
+          if (updated) {{
+            focusCodeField();
+          }}
+        }});
+        </script>
+        """,
+        height=360,
     )
 
 
@@ -128,6 +481,7 @@ def init_session_state():
         "main_event_date": datetime.now().date(),
         "main_transcription_date": datetime.now().strftime("%d/%m/%Y %H:%M"),
         "main_custom_terms": "",
+        "pending_segment_action": None,
     }
     for key, value in defaults.items():
         if key not in st.session_state:
@@ -141,6 +495,7 @@ def reset_transcription_state():
     st.session_state.current_chunk_idx = 0
     st.session_state.transcript_segments = []
     st.session_state.current_segment_text = ""
+    st.session_state.pending_segment_action = None
     st.session_state.memos = []
     st.session_state.codes = []
     st.session_state.last_transcription = ""
@@ -545,15 +900,30 @@ def add_formatted_transcript(doc, text):
         if not line:
             continue
 
-        speaker_match = re.match(r"^([A-Za-zÁÉÍÓÚáéíóúÑñ\s]+:)\s*(.*)$", line)
-        if speaker_match:
+        speaker_label, spoken_text = extract_speaker_label(line)
+        if speaker_label:
             paragraph = doc.add_paragraph()
-            speaker_label, spoken_text = speaker_match.groups()
             paragraph.add_run(speaker_label).bold = True
             if spoken_text:
                 paragraph.add_run(f" {spoken_text}")
         else:
             doc.add_paragraph(line)
+
+
+def extract_speaker_label(line):
+    """Detecta etiquetas de hablante tipo 'Entrevistadora 1:' al inicio de línea."""
+    prefix, separator, remainder = line.partition(":")
+    candidate = prefix.strip()
+    if not separator or not candidate:
+        return None, None
+
+    if len(candidate) > 48 or len(candidate.split()) > 6:
+        return None, None
+
+    if not re.fullmatch(r"[A-Za-zÁÉÍÓÚáéíóúÑñ0-9\s.\-_/()]+", candidate):
+        return None, None
+
+    return f"{candidate}:", remainder.strip()
 
 
 def build_codes_dataframe():
@@ -714,8 +1084,8 @@ def render_code_manager(segment_number):
                 st.rerun()
 
 
-def save_as_docx(text, title, event_date, transcription_date, memos_df):
-    """Genera un archivo .docx con metadatos, cuerpo y memos."""
+def save_as_docx(text, title, event_date, transcription_date, memos_df, codes_df):
+    """Genera un archivo .docx con metadatos, cuerpo, memos y códigos."""
     doc = Document()
     doc.add_heading("Transcripción de Investigación", 0)
 
@@ -738,6 +1108,19 @@ def save_as_docx(text, title, event_date, transcription_date, memos_df):
             paragraph.add_run(f"Segmento {row['segmento']}: ").bold = True
             paragraph.add_run(str(row["memo"]))
 
+    if not codes_df.empty:
+        doc.add_page_break()
+        doc.add_heading("Codificación", level=1)
+        for _, row in codes_df.iterrows():
+            paragraph = doc.add_paragraph()
+            paragraph.add_run(f"Segmento {row['segmento']} | Código: ").bold = True
+            paragraph.add_run(f"{row['codigo']}\n")
+            paragraph.add_run("Cita: ").bold = True
+            paragraph.add_run(f"{row['cita']}\n")
+            if str(row.get("nota", "")).strip():
+                paragraph.add_run("Nota: ").bold = True
+                paragraph.add_run(f"{row['nota']}\n")
+
     doc.add_paragraph("\n")
     footer = doc.add_paragraph()
     footer.alignment = 1
@@ -757,8 +1140,13 @@ def save_as_docx(text, title, event_date, transcription_date, memos_df):
     return temp_docx.name
 
 
-def render_downloads(text, title, event_date, transcription_date, memos_df, codes_df):
+def render_downloads(text, title, event_date, transcription_date, memos_df=None, codes_df=None):
     """Renderiza botones de descarga para texto, docx, memos y códigos."""
+    if memos_df is None:
+        memos_df = pd.DataFrame(st.session_state.memos)
+    if codes_df is None:
+        codes_df = build_codes_dataframe()
+
     col1, col2, col3, col4 = st.columns(4)
     with col1:
         st.download_button(
@@ -768,7 +1156,7 @@ def render_downloads(text, title, event_date, transcription_date, memos_df, code
             mime="text/plain",
         )
     with col2:
-        doc_path = save_as_docx(text, title, event_date, transcription_date, memos_df)
+        doc_path = save_as_docx(text, title, event_date, transcription_date, memos_df, codes_df)
         with open(doc_path, "rb") as doc_file:
             st.download_button(
                 "Descargar .DOCX",
@@ -803,21 +1191,14 @@ def render_downloads(text, title, event_date, transcription_date, memos_df, code
 def main():
     init_session_state()
 
-    st.markdown(
-        '<h3 class="main-title">Audioscript Contextual Pro. Transcripción inmersiva potenciada por IA en local</h3>',
-        unsafe_allow_html=True,
-    )
-    st.markdown(
-        '<p class="sub-title">Versión fusionada para investigación cualitativa. Por Teresa Márquez</p>',
-        unsafe_allow_html=True,
-    )
+    render_app_header()
 
     if not check_ffmpeg():
         st.error("Error: ffmpeg no está instalado. Instálalo con `brew install ffmpeg`.")
         st.stop()
 
     with st.sidebar:
-        st.title("Control rápido")
+        st.markdown("## Gestión de Proyecto")
 
         uploaded_file = st.file_uploader(
             "Subir audio o video",
@@ -827,8 +1208,18 @@ def main():
         if uploaded_file:
             restore_project_if_available(uploaded_file)
             st.success(f"Archivo cargado: {uploaded_file.name}")
+            st.markdown(
+                f"""
+                <div class="project-card">
+                  <strong>{st.session_state.main_doc_title or uploaded_file.name}</strong>
+                  <span>{st.session_state.main_event_date.strftime("%d/%m/%Y")} · {len(st.session_state.transcript_segments)} segmentos confirmados</span>
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
 
         st.divider()
+        st.markdown("## Configuración Rápida")
         mode = st.radio(
             "Modo de procesamiento",
             [
@@ -836,7 +1227,7 @@ def main():
                 "Completo (Solo audios cortos)",
             ],
             key="sidebar_mode",
-        )
+            )
 
         with st.expander("Ajustes avanzados", expanded=False):
             model_choice = st.selectbox(
@@ -868,6 +1259,21 @@ def main():
                 step=1,
                 key="sidebar_editor_font_size",
             )
+
+        st.markdown("## Estado")
+        render_sidebar_circle(
+            "Conexión",
+            "Offline",
+            "Estás trabajando en local, tus datos están protegidos.",
+        )
+        render_sidebar_circle(
+            "Motor",
+            model_choice.capitalize(),
+        )
+        render_sidebar_circle(
+            "Tiempo",
+            f"{st.session_state.sidebar_segment_mins} min" if "Segmentado" in mode else "Completo",
+        )
 
         with st.expander("Ayuda y guía", expanded=False):
             st.markdown(
@@ -935,39 +1341,81 @@ def main():
     )
 
     if mode == "Completo (Solo audios cortos)":
+        workspace_col, side_col = st.columns([3.6, 1.4], gap="large")
         render_keyboard_shortcuts(False)
-        if st.button("Iniciar Transcripción Completa"):
-            with st.spinner("Transcribiendo audio completo..."):
-                try:
-                    text = transcribe_audio(
-                        temp_audio_path,
-                        model_choice,
-                        language_choice,
-                        custom_terms,
-                        trans_type,
-                    )
-                    st.session_state.last_transcription = text
-                    save_project_state()
-                except Exception as exc:
-                    st.error(f"Error durante la transcripción: {exc}")
+        with workspace_col:
+            open_card("Transcripción Completa")
+            if st.button("Iniciar Transcripción Completa"):
+                with st.spinner("Transcribiendo audio completo..."):
+                    try:
+                        text = transcribe_audio(
+                            temp_audio_path,
+                            model_choice,
+                            language_choice,
+                            custom_terms,
+                            trans_type,
+                        )
+                        st.session_state.last_transcription = text
+                        save_project_state()
+                    except Exception as exc:
+                        st.error(f"Error durante la transcripción: {exc}")
 
-        if st.session_state.last_transcription:
-            st.subheader("Revisión de transcripción")
-            final_text = st.text_area(
-                "Edite el texto si es necesario",
-                value=st.session_state.last_transcription,
-                height=420,
-            )
-            st.session_state.last_transcription = final_text
-            render_downloads(
-                final_text,
-                doc_title,
-                event_date,
-                transcription_date,
-                memos_df,
-                codes_df,
-            )
+            if st.session_state.last_transcription:
+                toolbar_col1, toolbar_col2, toolbar_col3 = st.columns([1.4, 1.4, 1])
+                with toolbar_col1:
+                    complete_find_term = st.text_input(
+                        "Buscar en transcripción",
+                        key="complete_find_term",
+                    )
+                with toolbar_col2:
+                    complete_replace_term = st.text_input(
+                        "Reemplazar con",
+                        key="complete_replace_term",
+                    )
+                with toolbar_col3:
+                    if st.button("Reemplazar", key="complete_replace_btn"):
+                        if complete_find_term:
+                            st.session_state.last_transcription = (
+                                st.session_state.last_transcription.replace(
+                                    complete_find_term,
+                                    complete_replace_term,
+                                )
+                            )
+                            save_project_state()
+                            st.rerun()
+
+                final_text = st.text_area(
+                    "Edite el texto si es necesario",
+                    value=st.session_state.last_transcription,
+                    height=420,
+                )
+                st.session_state.last_transcription = final_text
+                render_selectable_transcript_panel(
+                    final_text,
+                    highlight_term=complete_find_term,
+                )
+                render_downloads(
+                    final_text,
+                    doc_title,
+                    event_date,
+                    transcription_date,
+                )
+            else:
+                st.info("Cuando inicies la transcripción completa, el texto aparecerá aquí.")
+            close_card()
+
+        with side_col:
+            st.markdown('<div class="section-card">', unsafe_allow_html=True)
+            render_memo_manager(0)
+            close_card()
+            st.markdown('<div class="section-card">', unsafe_allow_html=True)
+            render_code_manager(0)
+            close_card()
         save_project_state()
+        st.markdown(
+            '<div class="footer-bar">UNIVERSIDAD IBEROAMERICANA 2026 &nbsp; | &nbsp; Ciencias Sociales y Políticas</div>',
+            unsafe_allow_html=True,
+        )
         return
 
     if not st.session_state.chunks:
@@ -999,7 +1447,26 @@ def main():
         return
 
     if idx < len(chunks):
-        st.subheader(f"Segmento {idx + 1} de {len(chunks)}")
+        pending_segment_action = st.session_state.get("pending_segment_action")
+        if pending_segment_action == "advance":
+            if st.session_state.current_segment_text.strip():
+                st.session_state.transcript_segments.append(
+                    st.session_state.current_segment_text.strip()
+                )
+                st.session_state.current_chunk_idx += 1
+                st.session_state.current_segment_text = ""
+            st.session_state.pending_segment_action = None
+            save_project_state()
+            chunks = st.session_state.chunks
+            idx = st.session_state.current_chunk_idx
+            if idx >= len(chunks):
+                st.rerun()
+        elif pending_segment_action == "reset":
+            st.session_state.current_segment_text = ""
+            st.session_state.pending_segment_action = None
+            save_project_state()
+
+        st.markdown(f"### Segmento {idx + 1} de {len(chunks)}")
         st.progress(idx / len(chunks))
         if (
             st.session_state.chunk_segment_mins
@@ -1010,92 +1477,181 @@ def main():
             )
         render_keyboard_shortcuts(True)
 
-        col_main, col_side = st.columns([1.3, 1])
+        col_main, col_side = st.columns([3.6, 1.4], gap="large")
 
         with col_main:
-            st.markdown("### Reproductor del segmento")
+            open_card("Control de Reproducción")
             render_segment_audio_player(chunks[idx])
             st.caption(
-                "Atajos: `Ctrl+Shift+T` transcribe, `Ctrl+Enter` confirma, `Ctrl+Shift+R` reinicia."
+                "Atajos: `Ctrl+Shift+T` transcribe, `Ctrl+Enter` confirma, `Ctrl+Shift+R` reinicia, `Alt + ←/→` mueve el audio."
             )
+            close_card()
 
-            if st.button("Transcribir este fragmento"):
-                with st.spinner("Whisper está transcribiendo..."):
-                    try:
-                        text = transcribe_audio(
-                            chunks[idx],
-                            model_choice,
-                            language_choice,
-                            custom_terms,
-                            trans_type,
+            open_card("Transcripción")
+            toolbar_col1, toolbar_col2, toolbar_col3, toolbar_col4 = st.columns([1.3, 1.3, 1, 1])
+            with toolbar_col1:
+                find_term = st.text_input("Buscar en transcripción", key=f"find_term_{idx}")
+            with toolbar_col2:
+                replace_term = st.text_input("Reemplazar con", key=f"replace_term_{idx}")
+            with toolbar_col3:
+                if st.button("Reemplazar", key=f"replace_btn_{idx}"):
+                    if find_term:
+                        st.session_state.current_segment_text = (
+                            st.session_state.current_segment_text.replace(find_term, replace_term)
                         )
-                        st.session_state.current_segment_text = text
                         save_project_state()
                         st.rerun()
-                    except Exception as exc:
-                        st.error(f"Error en transcripción: {exc}")
+            with toolbar_col4:
+                if st.button("Transcribir", key=f"transcribe_btn_{idx}"):
+                    with st.spinner("Whisper está transcribiendo..."):
+                        try:
+                            text = transcribe_audio(
+                                chunks[idx],
+                                model_choice,
+                                language_choice,
+                                custom_terms,
+                                trans_type,
+                            )
+                            st.session_state.current_segment_text = text
+                            save_project_state()
+                            st.rerun()
+                        except Exception as exc:
+                            st.error(f"Error en transcripción: {exc}")
+
+            if find_term:
+                occurrences = st.session_state.current_segment_text.lower().count(find_term.lower())
+                st.caption(f"Coincidencias encontradas en el fragmento: {occurrences}")
+
+            render_selectable_transcript_panel(
+                st.session_state.current_segment_text,
+                highlight_term=find_term,
+            )
+            st.caption("Selecciona con el mouse una frase del panel superior y pulsa `Codificar selección`.")
 
             st.text_area(
                 "Edite este fragmento antes de continuar",
-                height=340,
+                height=280,
                 key="current_segment_text",
             )
 
-            c1, c2, c3 = st.columns(3)
+            c1, c2, c3, c4 = st.columns([1, 1, 1, 1])
             with c1:
                 if st.button("Confirmar y Siguiente"):
                     if st.session_state.current_segment_text.strip():
-                        st.session_state.transcript_segments.append(
-                            st.session_state.current_segment_text.strip()
-                        )
-                        st.session_state.current_chunk_idx += 1
-                        st.session_state.current_segment_text = ""
-                        save_project_state()
+                        st.session_state.pending_segment_action = "advance"
                         st.rerun()
                     st.warning("No hay texto para guardar.")
             with c2:
                 if st.button("Reiniciar segmento"):
-                    st.session_state.current_segment_text = ""
-                    save_project_state()
+                    st.session_state.pending_segment_action = "reset"
                     st.rerun()
             with c3:
                 st.button("Segmentación activa", disabled=True)
+            with c4:
+                st.metric("Palabras", len(st.session_state.current_segment_text.split()))
+
+            stats = [
+                ("Segmentos", str(len(st.session_state.transcript_segments))),
+                ("Memos", str(len(st.session_state.memos))),
+                ("Códigos", str(len(st.session_state.codes))),
+                ("Caracteres", str(len(st.session_state.current_segment_text))),
+            ]
+            st.markdown(
+                '<div class="mini-stat-grid">' +
+                "".join(
+                    [
+                        f'<div class="mini-stat"><div class="mini-stat__label">{label}</div><div class="mini-stat__value">{value}</div></div>'
+                        for label, value in stats
+                    ]
+                ) +
+                '</div>',
+                unsafe_allow_html=True,
+            )
+            close_card()
 
         with col_side:
-            memo_tab, code_tab = st.tabs(["Memos", "Codificación"])
-            with memo_tab:
+            st.markdown('<div class="section-card">', unsafe_allow_html=True)
+            with st.container():
                 render_memo_manager(idx + 1)
-            with code_tab:
+            close_card()
+
+            st.markdown('<div class="section-card">', unsafe_allow_html=True)
+            with st.container():
                 render_code_manager(idx + 1)
+            close_card()
         save_project_state()
+        st.markdown(
+            '<div class="footer-bar">UNIVERSIDAD IBEROAMERICANA 2026 &nbsp; | &nbsp; Ciencias Sociales y Políticas</div>',
+            unsafe_allow_html=True,
+        )
         return
 
     st.success("Transcripción completada")
+    workspace_col, side_col = st.columns([3.6, 1.4], gap="large")
     full_text = "\n\n".join(st.session_state.transcript_segments)
     render_keyboard_shortcuts(True)
-    final_view = st.text_area(
-        "Contenido consolidado",
-        value=full_text,
-        height=420,
-    )
-    render_downloads(
-        final_view,
-        doc_title,
-        event_date,
-        transcription_date,
-        pd.DataFrame(st.session_state.memos),
-        build_codes_dataframe(),
-    )
+    with workspace_col:
+        open_card("Transcripción Consolidada")
+        toolbar_col1, toolbar_col2, toolbar_col3 = st.columns([1.4, 1.4, 1])
+        with toolbar_col1:
+            final_find_term = st.text_input(
+                "Buscar en transcripción",
+                key="final_find_term",
+            )
+        with toolbar_col2:
+            final_replace_term = st.text_input(
+                "Reemplazar con",
+                key="final_replace_term",
+            )
+        with toolbar_col3:
+            if st.button("Reemplazar", key="final_replace_btn"):
+                if final_find_term:
+                    updated_segments = [
+                        segment.replace(final_find_term, final_replace_term)
+                        for segment in st.session_state.transcript_segments
+                    ]
+                    st.session_state.transcript_segments = updated_segments
+                    save_project_state()
+                    st.rerun()
 
-    if st.button("Empezar de nuevo"):
-        delete_project_state(st.session_state.current_project_id)
-        reset_transcription_state()
-        st.session_state.current_project_id = None
-        st.session_state.uploaded_file_id = None
-        st.session_state.autosave_last_saved = ""
-        st.rerun()
+        final_view = st.text_area(
+            "Contenido consolidado",
+            value=full_text,
+            height=420,
+        )
+        render_selectable_transcript_panel(
+            final_view,
+            highlight_term=final_find_term,
+        )
+        render_downloads(
+            final_view,
+            doc_title,
+            event_date,
+            transcription_date,
+        )
+
+        if st.button("Empezar de nuevo"):
+            delete_project_state(st.session_state.current_project_id)
+            reset_transcription_state()
+            st.session_state.current_project_id = None
+            st.session_state.uploaded_file_id = None
+            st.session_state.autosave_last_saved = ""
+            st.rerun()
+        close_card()
+
+    with side_col:
+        st.markdown('<div class="section-card">', unsafe_allow_html=True)
+        render_memo_manager(0)
+        close_card()
+        st.markdown('<div class="section-card">', unsafe_allow_html=True)
+        render_code_manager(0)
+        close_card()
 
     save_project_state()
+    st.markdown(
+        '<div class="footer-bar">UNIVERSIDAD IBEROAMERICANA 2026 &nbsp; | &nbsp; Ciencias Sociales y Políticas</div>',
+        unsafe_allow_html=True,
+    )
 
 
 if __name__ == "__main__":
