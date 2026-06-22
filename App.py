@@ -215,6 +215,49 @@ st.markdown(
         font-weight: 800;
         margin-top: 0.3rem;
     }
+    .dial-card {
+        background: white;
+        border: 1px solid rgba(20, 46, 83, 0.08);
+        border-radius: 18px;
+        padding: 0.85rem 0.75rem 1rem 0.75rem;
+        text-align: center;
+        box-shadow: 0 8px 22px rgba(30, 41, 59, 0.08);
+        margin-bottom: 0.9rem;
+    }
+    .dial-face {
+        width: 118px;
+        height: 118px;
+        margin: 0.2rem auto 0.75rem auto;
+        border-radius: 999px;
+        background: radial-gradient(circle at 50% 50%, #f8f4d3 0 38%, #4d82b6 40%, #173d67 100%);
+        border: 6px solid rgba(255,255,255,0.92);
+        box-shadow: 0 10px 22px rgba(20, 46, 83, 0.16);
+        display: grid;
+        place-items: center;
+    }
+    .dial-center {
+        min-width: 70px;
+        padding: 0.35rem 0.55rem;
+        border-radius: 10px;
+        background: #0f2f53;
+        color: white;
+        font-size: 0.95rem;
+        font-weight: 800;
+        line-height: 1.1;
+    }
+    .dial-title {
+        font-size: 0.78rem;
+        color: #6b7280;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        margin-bottom: 0.45rem;
+    }
+    .dial-current {
+        font-size: 1.2rem;
+        color: #7c4de1;
+        font-weight: 800;
+        margin-bottom: 0.5rem;
+    }
     .main-title {
         font-size: 28px !important;
         font-weight: 700;
@@ -273,7 +316,7 @@ def apply_editor_styles(font_size_px):
 def render_app_header():
     """Dibuja una cabecera cercana al mockup de referencia."""
     if os.path.exists(HEADER_REFERENCE_PATH):
-        st.image(HEADER_REFERENCE_PATH, width=980)
+        st.image(HEADER_REFERENCE_PATH, use_container_width=True)
         return
 
     st.markdown(
@@ -314,6 +357,80 @@ def render_sidebar_circle(label, value, note=""):
         """,
         unsafe_allow_html=True,
     )
+
+
+def select_dial_option(label, current_value, options, key_prefix):
+    """Dibuja un selector circular con opciones en posiciones tipo reloj."""
+    st.markdown(
+        f"""
+        <div class="dial-card">
+          <div class="dial-title">{label}</div>
+          <div class="dial-face"><div class="dial-center">{current_value}</div></div>
+          <div class="dial-current">Selecciona</div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    layout = [
+        [None, options[0], None],
+        [options[4], None, options[1]],
+        [options[3], None, options[2]],
+    ]
+
+    for row_idx, row in enumerate(layout):
+        cols = st.columns(3)
+        for col_idx, option in enumerate(row):
+            with cols[col_idx]:
+                if option is None:
+                    st.write("")
+                    continue
+                selected = option == current_value
+                button_label = f"* {option}" if selected else option
+                if st.button(
+                    button_label,
+                    key=f"{key_prefix}_{row_idx}_{col_idx}_{option}",
+                    help=f"Usar {option}",
+                ):
+                    return option
+
+    return current_value
+
+
+def render_font_size_dial():
+    """Controla el tamano de letra desde un dial compacto."""
+    current_size = st.session_state.sidebar_editor_font_size
+    st.markdown(
+        f"""
+        <div class="dial-card">
+          <div class="dial-title">Tamaño de letra</div>
+          <div class="dial-face"><div class="dial-center">{current_size}px</div></div>
+          <div class="dial-current">Editor</div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    minus_col, value_col, plus_col = st.columns([1, 1.4, 1])
+    with minus_col:
+        if st.button("- 1", key="font_size_minus"):
+            st.session_state.sidebar_editor_font_size = max(12, current_size - 1)
+            st.rerun()
+    with value_col:
+        st.number_input(
+            "Tamaño",
+            min_value=12,
+            max_value=28,
+            step=1,
+            key="sidebar_editor_font_size",
+            label_visibility="collapsed",
+        )
+    with plus_col:
+        if st.button("+ 1", key="font_size_plus"):
+            st.session_state.sidebar_editor_font_size = min(28, current_size + 1)
+            st.rerun()
+
+    return st.session_state.sidebar_editor_font_size
 
 
 def open_card(title):
@@ -1227,24 +1344,27 @@ def main():
                 "Completo (Solo audios cortos)",
             ],
             key="sidebar_mode",
-            )
+        )
+        trans_type = st.radio(
+            "Formato de transcripción",
+            ["Limpia (Sin muletillas)", "Verbatim (Literal - incluye errores)"],
+            key="sidebar_trans_type",
+        )
 
         with st.expander("Ajustes avanzados", expanded=False):
-            model_choice = st.selectbox(
-                "Modelo de Whisper",
+            st.session_state.sidebar_model_choice = select_dial_option(
+                "Modelo de transcripción",
+                st.session_state.sidebar_model_choice,
                 ["tiny", "base", "small", "medium", "large"],
-                key="sidebar_model_choice",
+                "model_dial",
             )
+            model_choice = st.session_state.sidebar_model_choice
             language_choice = st.selectbox(
                 "Idioma",
                 ["Detección automática", "Español", "Inglés"],
                 key="sidebar_language_choice",
             )
-            trans_type = st.radio(
-                "Formato de transcripción",
-                ["Limpia (Sin muletillas)", "Verbatim (Literal - incluye errores)"],
-                key="sidebar_trans_type",
-            )
+            editor_font_size = render_font_size_dial()
             if "Segmentado" in mode:
                 st.number_input(
                     "Minutos por segmento",
@@ -1252,27 +1372,16 @@ def main():
                     max_value=30,
                     key="sidebar_segment_mins",
                 )
-            editor_font_size = st.slider(
-                "Tamaño de letra del editor",
-                min_value=12,
-                max_value=28,
-                step=1,
-                key="sidebar_editor_font_size",
-            )
 
         st.markdown("## Estado")
+        render_sidebar_circle(
+            "Tiempo",
+            f"{st.session_state.sidebar_segment_mins} min" if "Segmentado" in mode else "Completo",
+        )
         render_sidebar_circle(
             "Conexión",
             "Offline",
             "Estás trabajando en local, tus datos están protegidos.",
-        )
-        render_sidebar_circle(
-            "Motor",
-            model_choice.capitalize(),
-        )
-        render_sidebar_circle(
-            "Tiempo",
-            f"{st.session_state.sidebar_segment_mins} min" if "Segmentado" in mode else "Completo",
         )
 
         with st.expander("Ayuda y guía", expanded=False):
