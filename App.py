@@ -286,7 +286,7 @@ os.makedirs(TEMP_DIR, exist_ok=True)
 APP_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECTS_DIR = os.path.join(APP_DIR, ".audioscript_projects")
 os.makedirs(PROJECTS_DIR, exist_ok=True)
-HEADER_REFERENCE_PATH = os.path.join(APP_DIR, "assets", "header_reference.png")
+HEADER_REFERENCE_PATH = os.path.join(APP_DIR, "assets", "header_reference.jpg")
 
 LANGUAGE_MAP = {
     "Detección automática": None,
