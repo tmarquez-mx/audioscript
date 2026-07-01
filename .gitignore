@@ -1,3 +1,14 @@
 __pycache__/
 *.pyc
 .audioscript_projects/
+.DS_Store
+.venv/
+assets/header_reference.png
+build/
+dist/
+tmp/
+output/
+*.log
+AudioScript_*.dmg
+AudioScript_*.dmg.sha256
+AudioScript_*.zip

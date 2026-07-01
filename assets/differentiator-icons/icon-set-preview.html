@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Iconos de diferenciales - AudioScript Contextual</title>
+  <style>
+    :root {
+      --ink: #24272e;
+      --muted: #667085;
+      --paper: #f8f5e9;
+      --blueprint: #0d3454;
+      --copper: #b6653c;
+      --line: rgba(38, 42, 50, 0.16);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: Avenir Next, Optima, Candara, Verdana, sans-serif;
+      background:
+        linear-gradient(90deg, rgba(13, 52, 84, 0.04) 1px, transparent 1px) 0 0 / 28px 28px,
+        linear-gradient(rgba(13, 52, 84, 0.04) 1px, transparent 1px) 0 0 / 28px 28px,
+        #f2eddd;
+    }
+
+    main {
+      width: min(1120px, calc(100vw - 32px));
+      margin: 40px auto;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      color: var(--blueprint);
+      font-family: Georgia, Iowan Old Style, serif;
+      font-size: clamp(32px, 5vw, 54px);
+      line-height: 1;
+    }
+
+    .lead {
+      max-width: 760px;
+      margin: 0 0 26px;
+      color: #4e5663;
+      font-size: 17px;
+      line-height: 1.55;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    article {
+      min-height: 100%;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.74);
+      box-shadow: 0 14px 34px rgba(30, 34, 42, 0.1);
+    }
+
+    img {
+      display: block;
+      width: min(100%, 232px);
+      height: auto;
+      margin-inline: auto;
+      margin-bottom: 16px;
+    }
+
+    h2 {
+      margin: 0 0 8px;
+      color: var(--blueprint);
+      font-size: 18px;
+      line-height: 1.18;
+    }
+
+    p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    code {
+      color: var(--copper);
+      font-size: 12px;
+    }
+
+    @media (max-width: 920px) {
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 560px) {
+      main {
+        width: min(100vw - 24px, 420px);
+        margin: 24px auto;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Iconos de diferenciales</h1>
+    <p class="lead">Sistema visual para explicar por que AudioScript Contextual es local, metodologico, accesible y capaz de trabajar sin internet.</p>
+
+    <section class="grid" aria-label="Iconos conceptuales de AudioScript Contextual">
+      <article>
+        <img src="./local-data-sovereignty.svg" alt="Icono de soberania de datos locales">
+        <h2>Soberania de datos</h2>
+        <p>Audio, transcripcion y memos viven en carpetas locales. <code>local-data-sovereignty.svg</code></p>
+      </article>
+
+      <article>
+        <img src="./methodological-control.svg" alt="Icono de control metodologico humano">
+        <h2>Control metodologico</h2>
+        <p>Transcripcion, memos, codigos y criterio humano en el mismo flujo. <code>methodological-control.svg</code></p>
+      </article>
+
+      <article>
+        <img src="./accessible-cost.svg" alt="Icono de freeware sin costos">
+        <h2>Freeware sin costos</h2>
+        <p>Sin costos de instalaci&oacute;n, mantenimiento ni suscripci&oacute;n. <code>accessible-cost.svg</code></p>
+      </article>
+
+      <article>
+        <img src="./offline-fieldwork.svg" alt="Icono de trabajo sin conexion">
+        <h2>Trabajo sin conexion</h2>
+        <p>Funciona en campo, archivo, avion o cualquier lugar sin red confiable. <code>offline-fieldwork.svg</code></p>
+      </article>
+    </section>
+  </main>
+</body>
+</html>
