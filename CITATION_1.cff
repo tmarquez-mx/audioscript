@@ -1,0 +1,35 @@
+cff-version: 1.2.0
+message: "Si este software te fue útil en tu investigación, por favor cítalo usando los metadatos de este archivo."
+type: software
+title: AudioScript Contextual
+version: 0.9.0-beta
+date-released: "2026-06-30"
+authors:
+  - family-names: Márquez
+    given-names: Teresa
+    orcid: https://orcid.org/0000-0003-0737-6484
+    affiliation: Universidad Iberoamericana
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.21184392
+    description: Versión archivada en Zenodo
+repository-code: https://github.com/tmarquez-mx/audioscript
+url: https://techiholic.netlify.app/audioscript_contextual
+abstract: >
+  Herramienta local de transcripción cualitativa para investigación social.
+  Articula la velocidad del reconocimiento automático de voz (OpenAI Whisper)
+  con el control metodológico de quien investiga. Permite transcribir, anotar,
+  codificar y exportar materiales auditivos sin conexión a internet y sin
+  suscripciones, preservando la soberanía de los datos en el equipo de la
+  persona investigadora. Disponible para macOS en Apple Silicon.
+keywords:
+  - transcripción cualitativa
+  - análisis cualitativo
+  - investigación social
+  - humanidades digitales
+  - software local
+  - OpenAI Whisper
+  - codificación cualitativa
+  - macOS
+  - soberanía de datos
+  - CAQDAS
