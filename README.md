@@ -7,7 +7,7 @@
 **Estado:** propuesta y prototipo conceptual interactivo. No es una aplicación en producción. (Propuesta inicial: abril 2025. Última revisión del repositorio: junio 2026.)
 
 
-**Audioscript contextual** es una propuesta de herramienta sociotécnica para agregar valor cualitativo a la transcripción de audio a texto en investigación social. Su propósito es acompañar la transcripción no como una simple conversión técnica, sino como la primera etapa del análisis inductivo, en la que escuchar, corregir, anotar, codificar e interpretar forman parte de una misma práctica metodológica.
+**Audioscript contextual** es una propuesta de artefacto epistémico para agregar valor cualitativo a la transcripción de audio a texto en investigación social. Su propósito es acompañar la transcripción no como una simple conversión técnica, sino como la primera etapa del análisis inductivo, en la que escuchar, corregir, anotar, codificar e interpretar forman parte de una misma práctica metodológica.
 
 La propuesta parte de un dilema frecuente en la investigación cualitativa: la transcripción manual ofrece precisión, familiaridad profunda con los datos y sensibilidad interpretativa, pero demanda mucho tiempo; la transcripción automatizada mediante IA es rápida, pero puede omitir matices relevantes como pausas, tonos, vacilaciones, cambios de énfasis y elementos contextuales del discurso. Audioscript contextual busca articular ambos enfoques: aprovechar la velocidad del cómputo sin desplazar el control cognitivo y metodológico de la persona investigadora.
 
