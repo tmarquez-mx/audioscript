@@ -13,7 +13,7 @@ La propuesta parte de un dilema frecuente en la investigación cualitativa: la t
 
 ## Esquema
 
-- [Demostración](#demostración)
+
 - [Propósito](#propósito)
 - [Problema que atiende](#problema-que-atiende)
 - [Marco metodológico](#marco-metodológico)
@@ -26,13 +26,6 @@ La propuesta parte de un dilema frecuente en la investigación cualitativa: la t
 - [Referencias](#referencias)
 - [Autoría](#autoría)
 
-## Demostración
-
-El demo conceptual interactivo puede explorarse en CodePen: [Ver demo en CodePen](https://codepen.io/Teresa-Marquez/pen/qERRvRy)
-
-La página de presentación del proyecto está disponible aquí: [Audioscript contextual, Techiholic labs](https://techiholic.netlify.app/audioscript_contextual)
-
-Captura de pantalla [Piloto 0.0.1](https://github.com/tmarquez-mx/audioscript/blob/main/prototipo0_1_1_Audioscript.png)
 
 ## Propósito
 
@@ -48,6 +41,15 @@ El proyecto identifica dos límites de las soluciones existentes:
 - La transcripción automática acelera el trabajo, pero suele requerir una edición posterior intensa y puede perder contexto discursivo.
 
 Audioscript contextual busca resolver esta tensión mediante una lógica híbrida: IA más intervención humana situada.
+
+
+
+
+<img width="3120" height="2110" alt="image" src="https://github.com/user-attachments/assets/1c08fca3-c35e-4294-bcdf-cf27eed8fbf2" />
+
+
+
+
 
 ## Marco metodológico
 
