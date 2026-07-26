@@ -80,6 +80,11 @@ Integra mecanismos para añadir anotaciones críticas y memos analíticos direct
 
 Facilita la codificación inductiva de fragmentos discursivos durante la revisión del texto. La codificación no aparece como una fase posterior y separada, sino como una práctica que puede iniciarse durante la escucha y la edición.
 
+<img width="920" height="1426" alt="PHOTO-2026-07-23-10-31-04" src="https://github.com/user-attachments/assets/14c678f7-0b37-42ef-8806-77d62cee1b51" />
+
+
+
+
 ### Exportación para análisis cualitativo
 
 Contempla la exportación hacia formatos compatibles con programas CAQDAS (NVivo, ATLAS.ti, MAXQDA u otros entornos de análisis cualitativo asistido por computadora).
