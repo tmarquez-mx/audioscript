@@ -70,7 +70,9 @@ Puedes exportar avances sin terminar todos los segmentos. QDPX requiere que las 
 
 La app tiene **firma local ad hoc, sin notarización de Apple**. macOS puede mostrar un aviso de seguridad.
 
-El **manual gráfico PDF de 13 páginas** está incluido en el DMG y se descarga también desde **Guía de uso > Manual gráfico (PDF)**. Usa capturas con datos sintéticos. Pasa el cursor por los botones para leer sus ayudas.
+**[Descargar el manual gráfico en PDF (13 páginas)](https://github.com/tmarquez-mx/audioscript/releases/download/v0.9.5.0/Manual_grafico_AudioScript_Contextual.pdf)**
+
+El manual también está incluido en el DMG y se descarga desde **Guía de uso > Manual gráfico (PDF)**. Usa capturas con datos sintéticos. Pasa el cursor por los botones para leer sus ayudas.
 
 ## Estado del desarrollo
 
