@@ -98,6 +98,8 @@ Ochs, E. (1979). Transcription as theory. En E. Ochs y B. B. Schieffelin (Eds.),
 
 ## Autoría
 
-Dra. Teresa Márquez  
-IBERO, Ciencias Sociales y Políticas  
+Dra. Teresa Márquez
+
+IBERO, Ciencias Sociales y Políticas
+
 [Techiholic Labs](https://techiholic.netlify.app/) · [Sitio de AudioScript Contextual](https://techiholic.netlify.app/audioscript_contextual)
