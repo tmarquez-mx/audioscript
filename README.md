@@ -4,11 +4,11 @@
 
 > Tu ritmo. Tu profundidad. Tus datos.
 
-**Beta de escritorio disponible para evaluación.** Actualización del 15 de noviembre de 2026: versión 0.9.5.0, compilación **2026.11.15.2**. No es una versión estable ni una garantía de transcripción sin errores.
+**Beta de escritorio disponible para evaluación.** Versión **0.9.6**, compilación **2026.11.16.6**. No es una versión estable ni una garantía de transcripción sin errores.
 
-**[Descargar el instalador y consultar las notas](https://github.com/tmarquez-mx/audioscript/releases/tag/v0.9.5.0)** · [Descarga directa del DMG](https://github.com/tmarquez-mx/audioscript/releases/download/v0.9.5.0/AudioScript_0.9.5.dmg) · [Verificación SHA-256](https://github.com/tmarquez-mx/audioscript/releases/download/v0.9.5.0/AudioScript_0.9.5.dmg.sha256)
+**[Descarga directa del DMG](https://github.com/tmarquez-mx/audioscript/releases/download/v0.9.6-beta/AudioScript_Contextual_Beta_0.9.6_2026.11.16.6.dmg)** · **[Manual gráfico (PDF)](https://github.com/tmarquez-mx/audioscript/releases/download/v0.9.6-beta/Manual_grafico_AudioScript_Contextual.pdf)** · [Notas de la beta](https://github.com/tmarquez-mx/audioscript/releases/tag/v0.9.6-beta) · [Verificación SHA-256](https://github.com/tmarquez-mx/audioscript/releases/download/v0.9.6-beta/AudioScript_Contextual_Beta_0.9.6_2026.11.16.6.dmg.sha256)
 
-**Requisitos: Mac con Apple Silicon y macOS 14 Sonoma o posterior.** Este instalador no es compatible con Intel, Windows ni macOS 13 Ventura. La página de la versión conserva su dirección; la compilación identifica el instalador actualizado.
+**Requisitos: Mac con Apple Silicon y macOS 14 Sonoma o posterior.** Este instalador no es compatible con Intel, Windows ni macOS 13 Ventura.
 
 ## Propósito
 
@@ -41,6 +41,8 @@ El diccionario es supervisado: **no equivale a diarización automática**. Inser
 
 Registra citas codificadas y memos con nombre, fecha, tipo y segmento vinculado. Los tipos de memo son analítico, teórico y metodológico. Códigos y memos se autoguardan al completar y confirmar sus campos. Los avisos de error de guardado requieren atención antes de cerrar la sesión.
 
+**Explorar la entrevista** permite generar nubes de palabras, consultar palabras en contexto y comparar entrevistas y grupos con frecuencias por cada 1.000 palabras. Usa el diccionario de hablantes del proyecto y funciona en local, sin IA.
+
 ### Preparar una copia anonimizada
 
 La anonimización local supervisada propone datos para revisar y permite añadir otros. Decide conservar, sustituir por texto o aplicar una franja negra, en una aparición o en todas las coincidencias del mismo dato. Revisa la copia completa antes de descargarla en TXT o Word.
@@ -51,11 +53,11 @@ La franja elimina el dato de la copia: no lo oculta debajo de una capa gráfica.
 
 | Formato | Contenido y uso |
 | --- | --- |
-| Word limpio | Transcripción para lectura continua. |
+| Word limpio | Transcripción y ficha para lectura continua, sin memos ni códigos. |
 | Word contextual | Transcripción, ficha y análisis disponible. |
 | TXT | Texto de trabajo. |
 | Excel | Tablas de memos y códigos, con detalle de citas codificadas. |
-| QDC | Diccionario de códigos; no es un proyecto completo. |
+| QDC | Diccionario de códigos y sus descripciones explícitas, sin citas. |
 | QDPX | Transcripción, citas codificadas y memos para QualCoder; no incluye audio. |
 | RIS | Metadatos de la entrevista para Zotero; no incluye la transcripción completa. |
 
@@ -70,13 +72,13 @@ Puedes exportar avances sin terminar todos los segmentos. QDPX requiere que las 
 
 La app tiene **firma local ad hoc, sin notarización de Apple**. macOS puede mostrar un aviso de seguridad.
 
-**[Descargar el manual gráfico en PDF (13 páginas)](https://github.com/tmarquez-mx/audioscript/releases/download/v0.9.5.0/Manual_grafico_AudioScript_Contextual.pdf)**
+**[Descargar el manual gráfico en PDF (18 páginas)](https://github.com/tmarquez-mx/audioscript/releases/download/v0.9.6-beta/Manual_grafico_AudioScript_Contextual.pdf)**
 
 El manual también está incluido en el DMG y se descarga desde **Guía de uso > Manual gráfico (PDF)**. Usa capturas con datos sintéticos. Pasa el cursor por los botones para leer sus ayudas.
 
 ## Estado del desarrollo
 
-La compilación publicada se probó en macOS 26.6.2 con Apple Silicon: arranque instalado, ayudas, descarga del manual, reproducción, transcripción real de audio sintético con Whisper tiny, autoguardado, códigos, memos, exportaciones y reapertura del proyecto. Esto no equivale a una validación en todas las versiones de macOS compatibles ni a una garantía de precisión para cualquier grabación.
+En Apple Silicon con macOS 26.6.2 se comprobó la descarga inicial de Whisper Medium y la transcripción de audio sintético sin conexión. En esta compilación se verificó manualmente con VoiceOver la biblioteca, el cambio de material y el recorrido por el Explorador hasta volver al segmento original. Esto no equivale a una validación en todas las versiones compatibles ni a una garantía de precisión para cualquier grabación.
 
 Los módulos Python propios del instalador se distribuyen como bytecode, sin sus archivos `.py` legibles. Esto no es cifrado ni impide la ingeniería inversa. Las dependencias de terceros conservan sus avisos y licencias.
 
