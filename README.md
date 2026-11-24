@@ -4,9 +4,9 @@
 
 > Tu ritmo. Tu profundidad. Tus datos.
 
-**Beta de escritorio disponible para evaluación.** Versión **0.9.6**, compilación **2026.11.16.6**. No es una versión estable ni una garantía de transcripción sin errores.
+**Beta de escritorio disponible para evaluación.** Versión **0.9.6**, compilación **2026.11.23.1**. No es una versión estable ni una garantía de transcripción sin errores.
 
-**[Descarga directa del DMG](https://github.com/tmarquez-mx/audioscript/releases/download/v0.9.6-beta/AudioScript_Contextual_Beta_0.9.6_2026.11.16.6.dmg)** · **[Manual gráfico (PDF)](https://github.com/tmarquez-mx/audioscript/releases/download/v0.9.6-beta/Manual_grafico_AudioScript_Contextual.pdf)** · [Notas de la beta](https://github.com/tmarquez-mx/audioscript/releases/tag/v0.9.6-beta) · [Verificación SHA-256](https://github.com/tmarquez-mx/audioscript/releases/download/v0.9.6-beta/AudioScript_Contextual_Beta_0.9.6_2026.11.16.6.dmg.sha256)
+**[Descarga directa del DMG](https://github.com/tmarquez-mx/audioscript/releases/download/v0.9.6-beta.20261123.1/AudioScript_Contextual_Beta_0.9.6_2026.11.23.1.dmg)** · **[Manual gráfico (PDF)](https://github.com/tmarquez-mx/audioscript/releases/download/v0.9.6-beta.20261123.1/Manual_grafico_AudioScript_Contextual.pdf)** · [Notas de la beta](https://github.com/tmarquez-mx/audioscript/releases/tag/v0.9.6-beta.20261123.1) · [Verificación SHA-256](https://github.com/tmarquez-mx/audioscript/releases/download/v0.9.6-beta.20261123.1/AudioScript_Contextual_Beta_0.9.6_2026.11.23.1.dmg.sha256)
 
 **Requisitos: Mac con Apple Silicon y macOS 14 Sonoma o posterior.** Este instalador no es compatible con Intel, Windows ni macOS 13 Ventura.
 
@@ -72,13 +72,15 @@ Puedes exportar avances sin terminar todos los segmentos. QDPX requiere que las 
 
 La app tiene **firma local ad hoc, sin notarización de Apple**. macOS puede mostrar un aviso de seguridad.
 
-**[Descargar el manual gráfico en PDF (18 páginas)](https://github.com/tmarquez-mx/audioscript/releases/download/v0.9.6-beta/Manual_grafico_AudioScript_Contextual.pdf)**
+**[Descargar el manual gráfico en PDF (20 páginas)](https://github.com/tmarquez-mx/audioscript/releases/download/v0.9.6-beta.20261123.1/Manual_grafico_AudioScript_Contextual.pdf)**
 
 El manual también está incluido en el DMG y se descarga desde **Guía de uso > Manual gráfico (PDF)**. Usa capturas con datos sintéticos. Pasa el cursor por los botones para leer sus ayudas.
 
 ## Estado del desarrollo
 
-En Apple Silicon con macOS 26.6.2 se comprobó la descarga inicial de Whisper Medium y la transcripción de audio sintético sin conexión. En esta compilación se verificó manualmente con VoiceOver la biblioteca, el cambio de material y el recorrido por el Explorador hasta volver al segmento original. Esto no equivale a una validación en todas las versiones compatibles ni a una garantía de precisión para cualquier grabación.
+En la compilación anterior (2026.11.16.6), en Apple Silicon con macOS 26.6.2 se comprobó la descarga inicial de Whisper Medium y la transcripción de audio sintético sin conexión. En esa compilación se verificó manualmente con VoiceOver la biblioteca, el cambio de material y el recorrido por el Explorador hasta volver al segmento original. Esto no equivale a una validación en todas las versiones compatibles ni a una garantía de precisión para cualquier grabación.
+
+En la compilación 2026.11.23.1 se verificaron, con una instalación aislada y datos sintéticos, la reapertura desde Finder sin perder la sesión, las dos descargas Word y el manual desde Guía de uso. La revisión de anonimización también reconoce variantes de acentuación y espaciado; la persona que investiga decide las sustituciones.
 
 Los módulos Python propios del instalador se distribuyen como bytecode, sin sus archivos `.py` legibles. Esto no es cifrado ni impide la ingeniería inversa. Las dependencias de terceros conservan sus avisos y licencias.
 
