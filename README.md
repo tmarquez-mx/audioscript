@@ -4,9 +4,9 @@
 
 > Tu ritmo. Tu profundidad. Tus datos.
 
-**Beta de escritorio disponible para evaluación.** Versión **0.9.6**, compilación **2026.11.24.2**. No es una versión estable ni una garantía de transcripción sin errores.
+**Beta de escritorio disponible para evaluación.** Versión **0.9.6**, compilación **2026.11.24.3**. No es una versión estable ni una garantía de transcripción sin errores.
 
-**[Descarga directa del DMG](https://github.com/tmarquez-mx/audioscript/releases/download/v0.9.6-beta.20261124.2/AudioScript_Contextual_Beta_0.9.6_2026.11.24.2.dmg)** · **[Manual gráfico (PDF)](https://github.com/tmarquez-mx/audioscript/releases/download/v0.9.6-beta.20261124.2/Manual_grafico_AudioScript_Contextual.pdf)** · [Notas de la beta](https://github.com/tmarquez-mx/audioscript/releases/tag/v0.9.6-beta.20261124.2) · [Verificación SHA-256](https://github.com/tmarquez-mx/audioscript/releases/download/v0.9.6-beta.20261124.2/AudioScript_Contextual_Beta_0.9.6_2026.11.24.2.dmg.sha256)
+**[Descarga directa del DMG](https://github.com/tmarquez-mx/audioscript/releases/download/v0.9.6-beta.20261124.3/AudioScript_Contextual_Beta_0.9.6_2026.11.24.3.dmg)** · **[Manual gráfico (PDF)](https://github.com/tmarquez-mx/audioscript/releases/download/v0.9.6-beta.20261124.3/Manual_grafico_AudioScript_Contextual.pdf)** · [Notas de la beta](https://github.com/tmarquez-mx/audioscript/releases/tag/v0.9.6-beta.20261124.3) · [Verificación SHA-256](https://github.com/tmarquez-mx/audioscript/releases/download/v0.9.6-beta.20261124.3/AudioScript_Contextual_Beta_0.9.6_2026.11.24.3.dmg.sha256)
 
 **Requisitos: Mac con Apple Silicon y macOS 14 Sonoma o posterior.** Este instalador no es compatible con Intel, Windows ni macOS 13 Ventura.
 
@@ -22,6 +22,30 @@ La transcripción manual favorece la familiaridad con los datos, pero demanda ti
 - La descarga inicial de los modelos requiere internet. Con los recursos instalados, se puede transcribir sin conexión.
 - Los proyectos, transcripciones, códigos y memos se guardan localmente. El instalador no incluye entrevistas, proyectos personales ni modelos descargados.
 - El procesamiento local no sustituye el cuidado del equipo, los respaldos ni la revisión de lo que se comparte. Las exportaciones ordinarias pueden conservar datos identificables.
+
+## Recorrido en pantallas
+
+Las capturas muestran un proyecto ficticio sobre un huerto y una biblioteca comunitaria. Selecciona una imagen para ampliarla.
+
+| Biblioteca de proyectos | Editor de transcripción |
+| --- | --- |
+| [![Biblioteca con el proyecto de ejemplo y el botón Abrir](docs/pantallas/biblioteca.png)](docs/pantallas/biblioteca.png) | [![Segmento con reproductor, texto seleccionado y barra de formato](docs/pantallas/editor.png)](docs/pantallas/editor.png) |
+| Abre un proyecto guardado o crea uno nuevo. | Escucha el segmento, corrige el texto y selecciona una cita para codificarla. |
+
+| Diccionario de hablantes | Copia anonimizada |
+| --- | --- |
+| [![Ficha del participante y su etiqueta en la transcripción](docs/pantallas/hablantes.png)](docs/pantallas/hablantes.png) | [![Copia revisada con el dato sustituido por una franja negra](docs/pantallas/anonimizacion.png)](docs/pantallas/anonimizacion.png) |
+| Define cómo identificar a cada persona en la entrevista. | Comprueba la sustitución antes de descargar la copia, sin modificar el original. |
+
+| Explorar la entrevista | Comparar grupos |
+| --- | --- |
+| [![Nube tipográfica y detalle de una palabra](docs/pantallas/explorador.png)](docs/pantallas/explorador.png) | [![Dos grupos por afiliación y sus frecuencias ajustadas](docs/pantallas/comparar-grupos.png)](docs/pantallas/comparar-grupos.png) |
+| Selecciona una palabra para volver a sus citas en contexto. | Contrasta el vocabulario por cada 1.000 palabras, incluso si los grupos hablan distintas cantidades. |
+
+| Vista previa del informe Word | Exportaciones |
+| --- | --- |
+| [![Vista previa con los términos elegidos, barras y tabla](docs/pantallas/informe-word.png)](docs/pantallas/informe-word.png) | [![Opciones de descarga de texto, hojas de cálculo y formatos de intercambio](docs/pantallas/exportaciones.png)](docs/pantallas/exportaciones.png) |
+| Revisa qué resultados y citas vas a compartir. | Elige el formato según necesites leer, analizar o intercambiar los datos. |
 
 ## Funciones disponibles
 
@@ -54,7 +78,8 @@ La franja elimina el dato de la copia: no lo oculta debajo de una capa gráfica.
 | Formato | Contenido y uso |
 | --- | --- |
 | Word limpio | Transcripción y ficha para lectura continua, sin memos ni códigos. |
-| Word contextual | Transcripción, ficha y análisis disponible. |
+| Word contextual | Transcripción y análisis disponible. Opcionalmente incluye una tabla del diccionario de hablantes solo con los campos que elijas. |
+| Informe Word del Explorador | Resultados de una entrevista o de la comparación de entrevistas y grupos. Revisa la selección de gráficas, nubes y citas antes de descargar el DOCX. |
 | TXT | Texto de trabajo. |
 | Excel | Tablas de memos y códigos, con detalle de citas codificadas. |
 | QDC | Diccionario de códigos y sus descripciones explícitas, sin citas. |
@@ -72,11 +97,13 @@ Puedes exportar avances sin terminar todos los segmentos. QDPX requiere que las 
 
 La app tiene **firma local ad hoc, sin notarización de Apple**. macOS puede mostrar un aviso de seguridad.
 
-**[Descargar el manual gráfico en PDF (21 páginas)](https://github.com/tmarquez-mx/audioscript/releases/download/v0.9.6-beta.20261124.2/Manual_grafico_AudioScript_Contextual.pdf)**
+**[Descargar el manual gráfico en PDF (27 páginas)](https://github.com/tmarquez-mx/audioscript/releases/download/v0.9.6-beta.20261124.3/Manual_grafico_AudioScript_Contextual.pdf)**
 
-El manual también está incluido en el DMG y se descarga desde **Guía de uso > Manual gráfico (PDF)**. Incluye 25 capturas reales con datos sintéticos. La página 2 muestra la biblioteca y las páginas 4 y 5 explican cómo agregar y retomar entrevistas. Pasa el cursor por los botones para leer sus ayudas.
+El manual también está incluido en el DMG y se descarga desde **Guía de uso > Manual gráfico (PDF)**. Usa capturas reales con datos sintéticos. Las páginas 20 a 24 recorren los informes Word, desde la selección hasta la descarga; la página 26 explica cuándo usar JSON entre proyectos. La página 2 muestra la biblioteca y las páginas 4 y 5 explican cómo agregar y retomar entrevistas. Pasa el cursor por los botones para leer sus ayudas.
 
 ## Estado del desarrollo
+
+En la compilación **2026.11.24.3** se verificaron, desde una instalación aislada del DMG, la vista previa y la descarga del informe individual y del informe comparativo de entrevistas y grupos. Los dos DOCX se abrieron con LibreOffice. El PDF obtenido desde **Guía de uso** coincidió con el manual de esta publicación.
 
 En la compilación 2026.11.24.2, con una copia extraída del DMG y una biblioteca de prueba, se agregaron dos entrevistas sintéticas y se recuperaron el segmento y el texto editado de la primera. Los accesos siguieron visibles con el panel cerrado, tanto en una ventana de escritorio como en una estrecha. El PDF descargado desde **Guía de uso** coincidió byte por byte con el manual de la publicación.
 
