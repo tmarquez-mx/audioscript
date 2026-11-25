@@ -4,9 +4,9 @@
 
 > Tu ritmo. Tu profundidad. Tus datos.
 
-**Beta de escritorio disponible para evaluación.** Versión **0.9.6**, compilación **2026.11.24.1**. No es una versión estable ni una garantía de transcripción sin errores.
+**Beta de escritorio disponible para evaluación.** Versión **0.9.6**, compilación **2026.11.24.2**. No es una versión estable ni una garantía de transcripción sin errores.
 
-**[Descarga directa del DMG](https://github.com/tmarquez-mx/audioscript/releases/download/v0.9.6-beta.20261124.1/AudioScript_Contextual_Beta_0.9.6_2026.11.24.1.dmg)** · **[Manual gráfico (PDF)](https://github.com/tmarquez-mx/audioscript/releases/download/v0.9.6-beta.20261124.1/Manual_grafico_AudioScript_Contextual.pdf)** · [Notas de la beta](https://github.com/tmarquez-mx/audioscript/releases/tag/v0.9.6-beta.20261124.1) · [Verificación SHA-256](https://github.com/tmarquez-mx/audioscript/releases/download/v0.9.6-beta.20261124.1/AudioScript_Contextual_Beta_0.9.6_2026.11.24.1.dmg.sha256)
+**[Descarga directa del DMG](https://github.com/tmarquez-mx/audioscript/releases/download/v0.9.6-beta.20261124.2/AudioScript_Contextual_Beta_0.9.6_2026.11.24.2.dmg)** · **[Manual gráfico (PDF)](https://github.com/tmarquez-mx/audioscript/releases/download/v0.9.6-beta.20261124.2/Manual_grafico_AudioScript_Contextual.pdf)** · [Notas de la beta](https://github.com/tmarquez-mx/audioscript/releases/tag/v0.9.6-beta.20261124.2) · [Verificación SHA-256](https://github.com/tmarquez-mx/audioscript/releases/download/v0.9.6-beta.20261124.2/AudioScript_Contextual_Beta_0.9.6_2026.11.24.2.dmg.sha256)
 
 **Requisitos: Mac con Apple Silicon y macOS 14 Sonoma o posterior.** Este instalador no es compatible con Intel, Windows ni macOS 13 Ventura.
 
@@ -27,13 +27,13 @@ La transcripción manual favorece la familiaridad con los datos, pero demanda ti
 
 ### Preparar y escuchar
 
-Crea proyectos y agrega materiales de audio o video. Elige idioma, modelo Whisper y duración de los segmentos. El valor inicial es cinco minutos; puedes ajustarlo. Para archivos grandes, Quick Split permite crear partes persistentes. La capacidad efectiva depende del equipo, el espacio disponible y los límites de carga; no se promete tamaño ilimitado.
+En **Biblioteca de proyectos** puedes crear o abrir un proyecto. Ya dentro, pulsa **Agregar entrevista**, elige un audio o video y confirma con **Agregar y abrir entrevista**. Para retomar una entrevista, pulsa **Ver entrevistas del proyecto** y **Abrir**: volverás al segmento donde estabas. Ambas acciones permanecen visibles con el panel lateral cerrado. Elige idioma, modelo Whisper y duración de los segmentos. El valor inicial es cinco minutos; puedes ajustarlo. Para archivos grandes, Quick Split permite crear partes persistentes. La capacidad efectiva depende del equipo, el espacio disponible y los límites de carga; no se promete tamaño ilimitado.
 
 Los segmentos se pueden trabajar en cualquier orden: avanzar, volver a uno anterior o contrastar fragmentos para interpretar su sentido. El modo completo está orientado a audios cortos.
 
 ### Revisar y contextualizar
 
-Edita el borrador mientras escuchas. La barra de selección permite aplicar negritas, subrayado, resaltado y tachado, o llevar una frase al campo de codificación. La ficha registra título, fecha y contexto. El diccionario de hablantes permite definir etiquetas, roles, alias y observaciones compartidas entre los materiales del proyecto.
+Edita el borrador mientras escuchas. La barra de selección permite aplicar negritas, subrayado, resaltado y tachado, o llevar una frase al campo de codificación. Cada entrevista nueva empieza con su propia ficha y diccionario de hablantes. Puedes registrar título, fecha y contexto, y definir etiquetas, roles, alias y observaciones. El título de una transcripción es independiente del nombre del proyecto.
 
 El diccionario es supervisado: **no equivale a diarización automática**. Insertar etiquetas o elegir una preferencia de confidencialidad no sustituye nombres ya escritos ni anonimiza el audio.
 
@@ -41,13 +41,13 @@ El diccionario es supervisado: **no equivale a diarización automática**. Inser
 
 Registra citas codificadas y memos con nombre, fecha, tipo y segmento vinculado. Los tipos de memo son analítico, teórico y metodológico. Códigos y memos se autoguardan al completar y confirmar sus campos. Los avisos de error de guardado requieren atención antes de cerrar la sesión.
 
-**Explorar la entrevista** permite generar nubes de palabras, consultar palabras en contexto y comparar entrevistas y grupos con frecuencias por cada 1.000 palabras. Usa el diccionario de hablantes del proyecto y funciona en local, sin IA.
+**Explorar la entrevista** permite generar nubes de palabras, consultar palabras en contexto y comparar entrevistas y grupos con frecuencias por cada 1.000 palabras. Usa el diccionario de hablantes de cada entrevista y funciona en local, sin IA.
 
 ### Preparar una copia anonimizada
 
-La anonimización local supervisada propone datos para revisar y permite añadir otros. Decide conservar, sustituir por texto o aplicar una franja negra, en una aparición o en todas las coincidencias del mismo dato. Revisa la copia completa antes de descargarla en TXT o Word.
+Escribe el dato que quieres retirar y elige un texto sustituto o **Franja negra**. **Aplicar a la copia** cambia todas las coincidencias de ese dato en la entrevista. Puedes añadir o quitar sustituciones, consultar **Ver la copia** y descargar **Copia anonimizada · TXT** o **Copia anonimizada · Word**. No hay búsqueda automática.
 
-La franja elimina el dato de la copia: no lo oculta debajo de una capa gráfica. El original permanece intacto. La copia no incluye audio, ficha, bibliografía, memos ni citas codificadas. La detección no es exhaustiva y el contexto puede seguir identificando a alguien; no se garantiza anonimato automático.
+La franja elimina el dato de la copia: no lo oculta debajo de una capa gráfica. El original permanece intacto. La copia no incluye audio, ficha, bibliografía, memos ni citas codificadas. Solo se sustituyen los datos que indiques y el contexto puede seguir identificando a alguien; no se garantiza anonimato automático.
 
 ## Exportaciones
 
@@ -72,11 +72,13 @@ Puedes exportar avances sin terminar todos los segmentos. QDPX requiere que las 
 
 La app tiene **firma local ad hoc, sin notarización de Apple**. macOS puede mostrar un aviso de seguridad.
 
-**[Descargar el manual gráfico en PDF (20 páginas)](https://github.com/tmarquez-mx/audioscript/releases/download/v0.9.6-beta.20261124.1/Manual_grafico_AudioScript_Contextual.pdf)**
+**[Descargar el manual gráfico en PDF (21 páginas)](https://github.com/tmarquez-mx/audioscript/releases/download/v0.9.6-beta.20261124.2/Manual_grafico_AudioScript_Contextual.pdf)**
 
-El manual también está incluido en el DMG y se descarga desde **Guía de uso > Manual gráfico (PDF)**. Usa capturas con datos sintéticos. Pasa el cursor por los botones para leer sus ayudas.
+El manual también está incluido en el DMG y se descarga desde **Guía de uso > Manual gráfico (PDF)**. Incluye 25 capturas reales con datos sintéticos. La página 2 muestra la biblioteca y las páginas 4 y 5 explican cómo agregar y retomar entrevistas. Pasa el cursor por los botones para leer sus ayudas.
 
 ## Estado del desarrollo
+
+En la compilación 2026.11.24.2, con una copia extraída del DMG y una biblioteca de prueba, se agregaron dos entrevistas sintéticas y se recuperaron el segmento y el texto editado de la primera. Los accesos siguieron visibles con el panel cerrado, tanto en una ventana de escritorio como en una estrecha. El PDF descargado desde **Guía de uso** coincidió byte por byte con el manual de la publicación.
 
 En la compilación anterior (2026.11.16.6), en Apple Silicon con macOS 26.6.2 se comprobó la descarga inicial de Whisper Medium y la transcripción de audio sintético sin conexión. En esa compilación se verificó manualmente con VoiceOver la biblioteca, el cambio de material y el recorrido por el Explorador hasta volver al segmento original. Esto no equivale a una validación en todas las versiones compatibles ni a una garantía de precisión para cualquier grabación.
 
