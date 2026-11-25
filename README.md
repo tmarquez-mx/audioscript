@@ -1,14 +1,21 @@
-# AudioScript Contextual
+<a name="audioscript-contextual"></a>
+
+# ![AudioScript Contextual](docs/diseno/portada.png)
 
 ## Transcripción inmersiva potenciada por IA
 
-> Tu ritmo. Tu profundidad. Tus datos.
+> **Tu ritmo.** *Tu profundidad.* **Tus datos.**
 
 **Beta de escritorio disponible para evaluación.** Versión **0.9.6**, compilación **2026.11.24.3**. No es una versión estable ni una garantía de transcripción sin errores.
 
-**[Descarga directa del DMG](https://github.com/tmarquez-mx/audioscript/releases/download/v0.9.6-beta.20261124.3/AudioScript_Contextual_Beta_0.9.6_2026.11.24.3.dmg)** · **[Manual gráfico (PDF)](https://github.com/tmarquez-mx/audioscript/releases/download/v0.9.6-beta.20261124.3/Manual_grafico_AudioScript_Contextual.pdf)** · [Notas de la beta](https://github.com/tmarquez-mx/audioscript/releases/tag/v0.9.6-beta.20261124.3) · [Verificación SHA-256](https://github.com/tmarquez-mx/audioscript/releases/download/v0.9.6-beta.20261124.3/AudioScript_Contextual_Beta_0.9.6_2026.11.24.3.dmg.sha256)
+<p>
+  <a href="https://github.com/tmarquez-mx/audioscript/releases/download/v0.9.6-beta.20261124.3/AudioScript_Contextual_Beta_0.9.6_2026.11.24.3.dmg"><img src="docs/diseno/descarga.png" alt="Descarga directa del DMG" width="222"></a>
+  <a href="https://github.com/tmarquez-mx/audioscript/releases/download/v0.9.6-beta.20261124.3/Manual_grafico_AudioScript_Contextual.pdf"><img src="docs/diseno/manual.png" alt="Manual gráfico (PDF)" width="189"></a>
+</p>
 
-**Requisitos: Mac con Apple Silicon y macOS 14 Sonoma o posterior.** Este instalador no es compatible con Intel, Windows ni macOS 13 Ventura.
+[Notas de la beta](https://github.com/tmarquez-mx/audioscript/releases/tag/v0.9.6-beta.20261124.3) · [Verificación SHA-256](https://github.com/tmarquez-mx/audioscript/releases/download/v0.9.6-beta.20261124.3/AudioScript_Contextual_Beta_0.9.6_2026.11.24.3.dmg.sha256)
+
+> **Requisitos: Mac con Apple Silicon y macOS 14 Sonoma o posterior.** Este instalador no es compatible con Intel, Windows ni macOS 13 Ventura.
 
 ## Propósito
 
@@ -18,73 +25,97 @@ La transcripción manual favorece la familiaridad con los datos, pero demanda ti
 
 ## Privacidad y trabajo sin conexión
 
-- El reconocimiento de voz se ejecuta en la computadora mediante Whisper. Las entrevistas no se envían a un servicio de transcripción en la nube.
-- La descarga inicial de los modelos requiere internet. Con los recursos instalados, se puede transcribir sin conexión.
-- Los proyectos, transcripciones, códigos y memos se guardan localmente. El instalador no incluye entrevistas, proyectos personales ni modelos descargados.
+- **El reconocimiento de voz se ejecuta en la computadora** mediante Whisper. Las entrevistas no se envían a un servicio de transcripción en la nube.
+- La descarga inicial de los modelos requiere internet. **Con los recursos instalados, se puede transcribir sin conexión.**
+- **Los proyectos, transcripciones, códigos y memos se guardan localmente.** El instalador no incluye entrevistas, proyectos personales ni modelos descargados.
 - El procesamiento local no sustituye el cuidado del equipo, los respaldos ni la revisión de lo que se comparte. Las exportaciones ordinarias pueden conservar datos identificables.
 
 ## Recorrido en pantallas
 
 Las capturas muestran un proyecto ficticio sobre un huerto y una biblioteca comunitaria. Selecciona una imagen para ampliarla.
 
-| Biblioteca de proyectos | Editor de transcripción |
-| --- | --- |
-| [![Biblioteca con el proyecto de ejemplo y el botón Abrir](docs/pantallas/biblioteca.png)](docs/pantallas/biblioteca.png) | [![Segmento con reproductor, texto seleccionado y barra de formato](docs/pantallas/editor.png)](docs/pantallas/editor.png) |
-| Abre un proyecto guardado o crea uno nuevo. | Escucha el segmento, corrige el texto y selecciona una cita para codificarla. |
+<table>
+  <thead><tr><th width="50%">Biblioteca de proyectos</th><th width="50%">Editor de transcripción</th></tr></thead>
+  <tbody>
+    <tr><td align="center"><a href="docs/pantallas/biblioteca.png"><img src="docs/pantallas/biblioteca.png" alt="Biblioteca con el proyecto de ejemplo y el botón Abrir" width="430"></a></td><td align="center"><a href="docs/pantallas/editor.png"><img src="docs/pantallas/editor.png" alt="Segmento con reproductor, texto seleccionado y barra de formato" width="430"></a></td></tr>
+    <tr><td>Abre un proyecto guardado o crea uno nuevo.</td><td>Escucha el segmento, corrige el texto y selecciona una cita para codificarla.</td></tr>
+  </tbody>
+</table>
 
-| Diccionario de hablantes | Copia anonimizada |
-| --- | --- |
-| [![Ficha del participante y su etiqueta en la transcripción](docs/pantallas/hablantes.png)](docs/pantallas/hablantes.png) | [![Copia revisada con el dato sustituido por una franja negra](docs/pantallas/anonimizacion.png)](docs/pantallas/anonimizacion.png) |
-| Define cómo identificar a cada persona en la entrevista. | Comprueba la sustitución antes de descargar la copia, sin modificar el original. |
+<table>
+  <thead><tr><th width="50%">Diccionario de hablantes</th><th width="50%">Copia anonimizada</th></tr></thead>
+  <tbody>
+    <tr><td align="center"><a href="docs/pantallas/hablantes.png"><img src="docs/pantallas/hablantes.png" alt="Ficha del participante y su etiqueta en la transcripción" width="430"></a></td><td align="center"><a href="docs/pantallas/anonimizacion.png"><img src="docs/pantallas/anonimizacion.png" alt="Copia revisada con el dato sustituido por una franja negra" width="430"></a></td></tr>
+    <tr><td>Define cómo identificar a cada persona en la entrevista.</td><td>Comprueba la sustitución antes de descargar la copia, sin modificar el original.</td></tr>
+  </tbody>
+</table>
 
-| Explorar la entrevista | Comparar grupos |
-| --- | --- |
-| [![Nube tipográfica y detalle de una palabra](docs/pantallas/explorador.png)](docs/pantallas/explorador.png) | [![Dos grupos por afiliación y sus frecuencias ajustadas](docs/pantallas/comparar-grupos.png)](docs/pantallas/comparar-grupos.png) |
-| Selecciona una palabra para volver a sus citas en contexto. | Contrasta el vocabulario por cada 1.000 palabras, incluso si los grupos hablan distintas cantidades. |
+<table>
+  <thead><tr><th width="50%">Explorar la entrevista</th><th width="50%">Comparar grupos</th></tr></thead>
+  <tbody>
+    <tr><td align="center"><a href="docs/pantallas/explorador.png"><img src="docs/pantallas/explorador.png" alt="Nube tipográfica y detalle de una palabra" width="430"></a></td><td align="center"><a href="docs/pantallas/comparar-grupos.png"><img src="docs/pantallas/comparar-grupos.png" alt="Dos grupos por afiliación y sus frecuencias ajustadas" width="430"></a></td></tr>
+    <tr><td>Selecciona una palabra para volver a sus citas en contexto.</td><td>Contrasta el vocabulario por cada 1.000 palabras, incluso si los grupos hablan distintas cantidades.</td></tr>
+  </tbody>
+</table>
 
-| Vista previa del informe Word | Exportaciones |
-| --- | --- |
-| [![Vista previa con los términos elegidos, barras y tabla](docs/pantallas/informe-word.png)](docs/pantallas/informe-word.png) | [![Opciones de descarga de texto, hojas de cálculo y formatos de intercambio](docs/pantallas/exportaciones.png)](docs/pantallas/exportaciones.png) |
-| Revisa qué resultados y citas vas a compartir. | Elige el formato según necesites leer, analizar o intercambiar los datos. |
+<table>
+  <thead><tr><th width="50%">Vista previa del informe Word</th><th width="50%">Exportaciones</th></tr></thead>
+  <tbody>
+    <tr><td align="center"><a href="docs/pantallas/informe-word.png"><img src="docs/pantallas/informe-word.png" alt="Vista previa con los términos elegidos, barras y tabla" width="430"></a></td><td align="center"><a href="docs/pantallas/exportaciones.png"><img src="docs/pantallas/exportaciones.png" alt="Opciones de descarga de texto, hojas de cálculo y formatos de intercambio" width="430"></a></td></tr>
+    <tr><td>Revisa qué resultados y citas vas a compartir.</td><td>Elige el formato según necesites leer, analizar o intercambiar los datos.</td></tr>
+  </tbody>
+</table>
 
 ## Funciones disponibles
 
-### Preparar y escuchar
+<details open>
+<summary><h3>Preparar y escuchar</h3></summary>
 
 En **Biblioteca de proyectos** puedes crear o abrir un proyecto. Ya dentro, pulsa **Agregar entrevista**, elige un audio o video y confirma con **Agregar y abrir entrevista**. Para retomar una entrevista, pulsa **Ver entrevistas del proyecto** y **Abrir**: volverás al segmento donde estabas. Ambas acciones permanecen visibles con el panel lateral cerrado. Elige idioma, modelo Whisper y duración de los segmentos. El valor inicial es cinco minutos; puedes ajustarlo. Para archivos grandes, Quick Split permite crear partes persistentes. La capacidad efectiva depende del equipo, el espacio disponible y los límites de carga; no se promete tamaño ilimitado.
 
 Los segmentos se pueden trabajar en cualquier orden: avanzar, volver a uno anterior o contrastar fragmentos para interpretar su sentido. El modo completo está orientado a audios cortos.
 
-### Revisar y contextualizar
+</details>
+
+<details>
+<summary><h3>Revisar y contextualizar</h3></summary>
 
 Edita el borrador mientras escuchas. La barra de selección permite aplicar negritas, subrayado, resaltado y tachado, o llevar una frase al campo de codificación. Cada entrevista nueva empieza con su propia ficha y diccionario de hablantes. Puedes registrar título, fecha y contexto, y definir etiquetas, roles, alias y observaciones. El título de una transcripción es independiente del nombre del proyecto.
 
 El diccionario es supervisado: **no equivale a diarización automática**. Insertar etiquetas o elegir una preferencia de confidencialidad no sustituye nombres ya escritos ni anonimiza el audio.
 
-### Analizar durante la transcripción
+</details>
+
+<details>
+<summary><h3>Analizar durante la transcripción</h3></summary>
 
 Registra citas codificadas y memos con nombre, fecha, tipo y segmento vinculado. Los tipos de memo son analítico, teórico y metodológico. Códigos y memos se autoguardan al completar y confirmar sus campos. Los avisos de error de guardado requieren atención antes de cerrar la sesión.
 
 **Explorar la entrevista** permite generar nubes de palabras, consultar palabras en contexto y comparar entrevistas y grupos con frecuencias por cada 1.000 palabras. Usa el diccionario de hablantes de cada entrevista y funciona en local, sin IA.
 
-### Preparar una copia anonimizada
+</details>
+
+<details>
+<summary><h3>Preparar una copia anonimizada</h3></summary>
 
 Escribe el dato que quieres retirar y elige un texto sustituto o **Franja negra**. **Aplicar a la copia** cambia todas las coincidencias de ese dato en la entrevista. Puedes añadir o quitar sustituciones, consultar **Ver la copia** y descargar **Copia anonimizada · TXT** o **Copia anonimizada · Word**. No hay búsqueda automática.
 
 La franja elimina el dato de la copia: no lo oculta debajo de una capa gráfica. El original permanece intacto. La copia no incluye audio, ficha, bibliografía, memos ni citas codificadas. Solo se sustituyen los datos que indiques y el contexto puede seguir identificando a alguien; no se garantiza anonimato automático.
 
+</details>
+
 ## Exportaciones
 
 | Formato | Contenido y uso |
 | --- | --- |
-| Word limpio | Transcripción y ficha para lectura continua, sin memos ni códigos. |
-| Word contextual | Transcripción y análisis disponible. Opcionalmente incluye una tabla del diccionario de hablantes solo con los campos que elijas. |
-| Informe Word del Explorador | Resultados de una entrevista o de la comparación de entrevistas y grupos. Revisa la selección de gráficas, nubes y citas antes de descargar el DOCX. |
-| TXT | Texto de trabajo. |
-| Excel | Tablas de memos y códigos, con detalle de citas codificadas. |
-| QDC | Diccionario de códigos y sus descripciones explícitas, sin citas. |
-| QDPX | Transcripción, citas codificadas y memos para QualCoder; no incluye audio. |
-| RIS | Metadatos de la entrevista para Zotero; no incluye la transcripción completa. |
+| **Word limpio** | Transcripción y ficha para lectura continua, sin memos ni códigos. |
+| **Word contextual** | Transcripción y análisis disponible. Opcionalmente incluye una tabla del diccionario de hablantes solo con los campos que elijas. |
+| **Informe Word del Explorador** | Resultados de una entrevista o de la comparación de entrevistas y grupos. Revisa la selección de gráficas, nubes y citas antes de descargar el DOCX. |
+| **TXT** | Texto de trabajo. |
+| **Excel** | Tablas de memos y códigos, con detalle de citas codificadas. |
+| **QDC** | Diccionario de códigos y sus descripciones explícitas, sin citas. |
+| **QDPX** | Transcripción, citas codificadas y memos para QualCoder; no incluye audio. |
+| **RIS** | Metadatos de la entrevista para Zotero; no incluye la transcripción completa. |
 
 Puedes exportar avances sin terminar todos los segmentos. QDPX requiere que las citas sigan coincidiendo con el texto; si lo corriges, revisa las codificaciones. La compatibilidad con otros programas de análisis cualitativo no se presume equivalente a la comprobada con QualCoder. Una exportación no sustituye el respaldo del proyecto completo.
 
@@ -119,7 +150,7 @@ Los módulos Python propios del instalador se distribuyen como bytecode, sin sus
 
 ## Marco metodológico
 
-Transcribir no es copiar el habla, sino interpretarla. Ochs (1979) sitúa la transcripción en relación con los intereses teóricos de quien investiga: qué aspectos de una interacción se atienden y cómo se representan. No es un registro neutro, sino una práctica selectiva (Bucholtz, 2000). Decidir qué pausas marcar, cómo representar un solapamiento o qué conservar del contexto es ya una decisión analítica.
+**Transcribir no es copiar el habla, sino interpretarla.** Ochs (1979) sitúa la transcripción en relación con los intereses teóricos de quien investiga: qué aspectos de una interacción se atienden y cómo se representan. No es un registro neutro, sino una práctica selectiva (Bucholtz, 2000). Decidir qué pausas marcar, cómo representar un solapamiento o qué conservar del contexto es ya una decisión analítica.
 
 Desde esta perspectiva, el control humano sobre el material empírico forma parte del rigor de la investigación cualitativa y de sus condiciones de credibilidad y confirmabilidad (Lincoln y Guba, 1985). AudioScript no busca automatizar la interpretación, sino sostener las condiciones para ejercerla durante la escucha y la revisión.
 
